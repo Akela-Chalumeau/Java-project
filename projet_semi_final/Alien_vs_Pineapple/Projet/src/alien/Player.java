@@ -9,12 +9,12 @@ public class Player {
 	private String name;
 	private Spaceship armada;
 	Collection<Planet> empire;
-	private Image planet_logo;
+	private Image planetLogo;
 	
 	public Player(String name, Spaceship armada, Image image){
-		this.name=name;
-		this.armada=new Spaceship(armada);
-		planet_logo=image;
+		this.name = name;
+		this.armada = new Spaceship(armada);
+		planet_logo = image;
 		empire = new ArrayList<Planet>();
 	}
 	
