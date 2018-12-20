@@ -7,7 +7,7 @@ This project consists in a space game. The galaxy contains :
 
 The planets are from a certain distance from each other and produce a certain kind of spaceships, except the neutral. They are bigger than the spaceships.
 
-Rules:
+Rules :
 At the start of the game, each player (which can be an IA) possess one planet.
 They can launch a squadron of spaceships to an other planet in order to :
 - attack if the planet is controlled by an ennemi
@@ -16,6 +16,6 @@ Each spaceship has a firepower of 1 and a defense value of 1, so one spaceship c
 The game ends when there is only one player left, and you loose when you do not control any planet.
 
 
-Instructions:
+Instructions :
 You can send your spaceships using the mouse by clicking on your planet, dragging all the way to the destination planet, and releasing. That way, you will send a whole scadron. If you click on it, the scadron will stop so you can redirect the spaceshipe to change your target or decide to help one of your planets.
 You can also change the amount of spaceships sent with the keyboard. By pressing the upwards arrow ↑, you can increase the percentage of spaceships you send ; and by pressing the downwards arrow ↓, you can decrease it. The percentage by defalut is 50%.
