@@ -12,19 +12,19 @@ public class Spaceship extends Sprite{
 	
 	public Spaceship(double width, double height, double maxX, double maxY, String side, int power, int productionTime, boolean mode) {
 		super(width, height, maxX, maxY);
-		this.power=power;
-		this.productionTime=productionTime;
-		this.side=side;
+		this.power = power;
+		this.productionTime = productionTime;
+		this.side = side;
 		
 		String name;
 		switch(side) {
-		case "player":name="/images/TIE_fighter.png";
+		case "player":name = "/images/TIE_fighter.png";
 		break;
-		case "adverse":name="/images/licorne.gif";
+		case "adverse":name = "/images/licorne.gif";
 		break;
-		default: name="/images/asteroid.png";
+		default: name = "/images/asteroid.png";
 		}
-		image=new Image(Spaceship.class.getResource(name).toString(), width, height, false, false);
+		image = new Image(Spaceship.class.getResource(name).toString(), width, height, false, false);
 	}
 	
 	public Spaceship(double width, double height, double maxX, double maxY) {
@@ -33,10 +33,10 @@ public class Spaceship extends Sprite{
 	
 	public Spaceship(Spaceship s) {
 		super(s.width(), s.height(), s.maxX(), s.maxY());
-		power=s.power;
-		productionTime=s.productionTime();
-		side=s.getSide();
-		image=s.image;
+		power = s.power;
+		productionTime = s.productionTime();
+		side = s.getSide();
+		image = s.image;
 	}
 	
 	public String getSide() {
@@ -62,10 +62,10 @@ public class Spaceship extends Sprite{
 	}
 	
 	public boolean impact(Collection<Planet> planets) {
-		boolean res=false;
+		boolean res = false;
 		if (intersects(destination)) {
 			destination.impact(this);
-			res=true;
+			res = true;
 		}
 		return res;
 	}
