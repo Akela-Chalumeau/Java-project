@@ -9,25 +9,25 @@ import javafx.scene.canvas.GraphicsContext;
 public class Planet extends Sprite{
 	private int value; //number of spaceships
 	private Spaceship armada; //ship type
-	private int cpt=0;
+	private int cpt = 0;
 	
 	public Planet(double width, double height, double maxX, double maxY, double x, double y, String side, Spaceship armada) {
 		super(width, height, maxX, maxY);
 		super.setPosition(x, y);
 		String name;
 		switch(side) {
-		case "player":name="/images/planet_player.png";
-			this.value=100;
+		case "player":name = "/images/planet_player.png";
+			this.value = 100;
 		break;
-		case "adverse":name="/images/planet_rondoudou.png";
-			this.value=50;
+		case "adverse":name = "/images/planet_rondoudou.png";
+			this.value = 50;
 		break;
-		default: name="/images/planet_neutral.png";
-			this.value=10;
+		default: name = "/images/planet_neutral.png";
+			this.value = 10;
 		}
-		image=new Image(Planet.class.getResource(name).toString(), width, height, false, false);
-		this.side=side;
-		this.armada=armada;
+		image = new Image(Planet.class.getResource(name).toString(), width, height, false, false);
+		this.side = side;
+		this.armada = armada;
 	}
 	
 	public Planet(double width, double height, double maxX, double maxY, Spaceship armada) {
@@ -67,20 +67,20 @@ public class Planet extends Sprite{
 //			if (cpt>=1) {
 			if (cpt>=armada.productionTime()) {
 				value++;
-				cpt=0;
+				cpt = 0;
 			}
 		}
 	}
 	
 	public void changeSide(String newSide) {
 		String name;
-		side=newSide;
+		side = newSide;
 		switch(newSide) {
-		case "player":name="/images/planet_player.png";
+		case "player":name = "/images/planet_player.png";
 		break;
-		case "adverse":name="/images/planet_rondoudou.png";
+		case "adverse":name = "/images/planet_rondoudou.png";
 		break;
-		default: name="/images/planet_neutral.png";
+		default: name = "/images/planet_neutral.png";
 		}
 		image=new Image(Planet.class.getResource(name).toString(), width(), height(), false, false);
 	}
@@ -94,12 +94,12 @@ public class Planet extends Sprite{
 		Point xy = new Point(0,0);
 		double p;
 		
-		int index=0;
+		int index = 0;
 		while(t_ships[index] !=null && !t_ships[index].isEmpty()) {
 			index++;
 		}
 		
-		for(int i=1; i<=nbSpaceships;i++) {
+		for(int i=1; i<=nbSpaceships; i++) {
 			Spaceship GuiGui = new Spaceship(armada);
 			
 			xy.x= Math.random()*100-50;
@@ -138,7 +138,7 @@ public class Planet extends Sprite{
 				Iterator<Planet> p = planets.iterator();
 				while(p.hasNext()) {
 					Planet planet = p.next();
-					this.deploy(planet, 0.5 , t_ships);
+					this.deploy(planet, 0.5, t_ships);
 				}
 			}
 		}
