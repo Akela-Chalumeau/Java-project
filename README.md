@@ -17,3 +17,4 @@ The game ends when there is only one player left, and you loose when you do not 
 
 
 Instructions:
+You can send your spaceships using the mouse by clicking on your planet, dragging all the way to the destination planet, and releasing.
