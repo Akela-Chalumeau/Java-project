@@ -26,13 +26,13 @@ import javafx.stage.Stage;
 import javafx.scene.shape.Line;
 
 public class Game extends Application {
-	private final static int SPEEDGAME=100;
+	private final static int SPEEDGAME = 100;
 	private final static int WIDTH = 600;
 	private final static int HEIGHT = 600;
 	public final static int ATTACK = 5;
 	public static Planet p_clicked;
-	public static int c_squadron=-1;
-	public static double percentage=0.5;
+	public static int c_squadron = -1;
+	public static double percentage = 0.5;
 
 	public static String getRessourcePathByName(String name) {
 		return Game.class.getResource('/' + name).toString();
@@ -68,11 +68,13 @@ public class Game extends Application {
 //		Sprite spaceship = new Sprite(getRessourcePathByName("images/alien.png"), 62, 36, WIDTH, HEIGHT);
 //		spaceship.setPosition(WIDTH / 2 - spaceship.width() / 2, HEIGHT / 2 - spaceship.height() / 2);
 		
+		//player spaceship
 		Spaceship light = new Spaceship(50, 50, WIDTH, HEIGHT, "player", 1, 100, true);
+		//adverse spaceship
 		Spaceship dark = new Spaceship(50, 50, WIDTH, HEIGHT, "adverse", 1, 100, true);
 	
 		Collection<Planet> planets = new ArrayList<Planet>();
-		Planet circle= new Planet(150, 150, WIDTH, HEIGHT, 50, 50, "player", light);
+		Planet circle = new Planet(150, 150, WIDTH, HEIGHT, 50, 50, "player", light);
 		planets.add(circle);
 		
 		Planet deux = new Planet(75, 75, WIDTH, HEIGHT, light);
@@ -95,9 +97,9 @@ public class Game extends Application {
 			public void handle(MouseEvent e) {
 				
 				Iterator<Planet> p = planets.iterator();
-				boolean notFound=true; //if we clicked on a planet
+				boolean notFound = true; //if we clicked on a planet
 				Point clic=new Point(e.getX(), e.getY());
-				int i=0;
+				int i = 0;
 				
 				
 				String txt = e.getEventType().getName();
@@ -107,8 +109,8 @@ public class Game extends Application {
 					while(p.hasNext() && notFound) {
 						Planet planet = p.next();
 						if(planet.isInterior(clic) && planet.getSide()=="player") {
-							notFound=false;
-							p_clicked=planet;
+							notFound = false;
+							p_clicked = planet;
 //							gc.setStroke(Color.WHITE);
 //							gc.setLineWidth(5);
 //							gc.strokeLine(e.getX(),  e.getY(), e.getX(),e.getY());
@@ -125,8 +127,8 @@ public class Game extends Application {
 								Spaceship ship = it.next();
 								if(ship.isInterior(clic) && ship.getSide()=="player") {
 									
-									notFound=false;
-									c_squadron=i;
+									notFound = false;
+									c_squadron = i;
 //									System.out.println(c_squadron);
 									
 								}
@@ -145,17 +147,17 @@ public class Game extends Application {
 						if(planet.isInterior(clic) && (p_clicked!=null || c_squadron!=-1)) {
 							
 							if(p_clicked!=null) {
-								notFound=false;
+								notFound = false;
 								p_clicked.deploy(planet, percentage, t_ships);
-								p_clicked=null;
+								p_clicked = null;
 							}
 							else {
-								notFound=false;
+								notFound = false;
 								Iterator<Spaceship> it = t_ships[c_squadron].iterator();
 								it.forEachRemaining(s -> {
 									s.changeDestination(planet);
 								});
-								c_squadron=-1;
+								c_squadron = -1;
 							}
 //							if(s_clicked!=null) {
 //								notFound=false;
@@ -211,12 +213,12 @@ public class Game extends Application {
 //					break;
 				case Z:
 				case UP: if(percentage<1) {
-					percentage+=0.05;
+					percentage += 0.05;
 				}
 				break;
 				case S:
 				case DOWN: if((int)(percentage*100)>0) {
-					percentage-=0.05;
+					percentage -= 0.05;
 				}
 				break;
 				default:
