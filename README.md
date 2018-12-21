@@ -8,7 +8,7 @@ This project consists in a space game. The galaxy contains :
 The planets are from a certain distance from each other and produce a certain kind of spaceships, except the neutral. They are bigger than the spaceships.
 
 Rules : At the start of the game, each player (which can be an IA) possess one planet. They can launch a squadron of spaceships to an other planet in order to :
-- attack if the planet is controlled by an ennemi
+- attack if the planet is controlled by an enemy
 - invade a neutral planet
 - reinforce the army of the planet if the player controls both 
 
