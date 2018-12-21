@@ -19,6 +19,9 @@ public class Player {
 		return armada;
 	}
 	
+	public boolean isPlayer(){
+		return (name=="player");
+	}
 	public boolean isNeutral(){
 		return (name=="neutral");
 	}

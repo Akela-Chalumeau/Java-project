@@ -1,6 +1,7 @@
 package alien;
 
 import java.awt.event.InputEvent;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,12 +24,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.scene.shape.Line;
+//import javafx.scene.shape.Line;
 
 public class Game extends Application {
 //	private final static int SPEEDGAME=100;
-	private final static int WIDTH = 600;
-	private final static int HEIGHT = 600;
+	private final static int WIDTH = 1000;
+	private final static int HEIGHT = 1000;
 	public final static int ATTACK = 20;
 	public static Planet p_clicked;
 	public static int c_squadron=-1;
@@ -80,12 +81,12 @@ public class Game extends Application {
 		players[1].setArmada(dark);
 		
 		Planet[] planets = new Planet[10];
-		planets[0] = new Planet(150, 150, WIDTH, HEIGHT, 50, 50, players[0]);
-		planets[1] = new Planet(75, 75, WIDTH, HEIGHT, 500, 500, players[1]);
+		planets[0] = new Planet(100, WIDTH, HEIGHT, 50, 50, players[0]);
+		planets[1] = new Planet(100, WIDTH, HEIGHT, WIDTH-125, HEIGHT-125, players[1]);
 		
 		for(int i=2;i<Math.random()*7+3;i++){
 			
-			double size=Math.random()*150+50;
+			double size=Math.random()*50+75;
 			planets[i] = new Planet(size, WIDTH, HEIGHT, players[2]);
 			
 			int j=0;
@@ -221,8 +222,35 @@ public class Game extends Application {
 					percentage-=0.05;
 				}
 				break;
+				case ESCAPE:
+					FileOutputStream fichier;
+					try {
+						fichier = new FileOutputStream("test.txt");
+						ObjectOutputStream oos = new ObjectOutputStream(fichier);
+						oos.writeObject(planets[3]);
+						oos.flush();
+						oos.close();
+					} catch (IOException e1) {
+//						 TODO Auto-generated catch block
+						e1.printStackTrace();
+						System.out.println("ca a pas marcher :(");
+					}
+				break;
+				case ENTER:
+//					FileInputStream fichier2;
+//					ObjectInputStream oos2;
+//					try {
+//						fichier2 = new FileInputStream("test.txt");
+//						oos2 = new ObjectInputStream(fichier2);
+////					planets[3]= oos2.readObject();
+//						Object t = oos2.readObject();
+//					} catch (IOException | ClassNotFoundException e1) {
+////						 TODO Auto-generated catch block
+//						e1.printStackTrace();
+//						System.out.println("ca a pas marcher :(");
+//					}
+				break;
 				default:
-//					spaceship.changeSpeed(e.getCode());
 					if (mediaPlayerFinalCopy != null) {
 						mediaPlayerFinalCopy.stop();
 						mediaPlayerFinalCopy.play();
@@ -234,8 +262,6 @@ public class Game extends Application {
 		new AnimationTimer() {
 			public void handle(long arg0) {
 				gc.drawImage(space, 0, 0);
-
-//				spaceship.updatePosition();
 
 				for(Collection<Spaceship> squadron : t_ships){
 					if(squadron!=null && !squadron.isEmpty()) {
@@ -253,22 +279,27 @@ public class Game extends Application {
 				}
 				
 				int i=0;
-				boolean end=true;
+				boolean victory=true;
+				boolean defeat=true;
 				while(i<10 && planets[i]!=null){
 					planets[i].product();
 					planets[i].IA(ATTACK, planets, t_ships);
 					planets[i].render(gc);
 					
 					if(planets[i].getSide().isAdverse()){
-						end=false;
+						victory=false;
+					}
+					if(planets[i].getSide().isPlayer()){
+						defeat=false;
 					}
 					
 					i++;
 				}
-				if(end){
-					gc.fillText("WIN", 300, 50);
-//					Image yo= new Image(Planet.class.getResource("/images/mario.png").toString(), 50,50, false, false);
-//					gc.drawImage(yo, 350, 50);
+				if(victory){
+					gc.fillText("WIN", WIDTH/2, 50);
+				}
+				if(defeat){
+					gc.fillText("LOSE", WIDTH/2, 50);
 				}
 
 				String txt = Math.round(percentage*100)+"%";

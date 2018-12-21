@@ -43,7 +43,7 @@ public class Spaceship extends Sprite{
 		break;
 		default: name="/images/asteroid.png";
 		}
-		image=new Image(Spaceship.class.getResource(name).toString(), width, height, false, false);
+		image=new Image(Spaceship.class.getResource(name).toString(), width(), height(), false, false);
 		
 	}
 	

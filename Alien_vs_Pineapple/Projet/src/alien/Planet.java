@@ -2,10 +2,15 @@ package alien;
 
 import javafx.scene.image.Image;
 import java.util.Collection;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Planet extends Sprite{
+public class Planet extends Sprite implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int value; //number of spaceships
 	private int cpt=0;
 	
@@ -16,10 +21,14 @@ public class Planet extends Sprite{
 		if(side.isNeutral()){
 			value=10;
 		}
-		if(side.name()=="player"){
-			value=10000;
-		}
+//		if(side.name()=="player"){
+//			value=10000;
+//		}
 		image=new Image(Planet.class.getResource(side.getLogo()).toString(), width, height, false, false);
+	}
+	
+	public Planet(double size, double maxX, double maxY, double x, double y, Player side) {
+		this(size, size, maxX, maxY, x, y, side);
 	}
 	
 	public Planet(Planet p) {
@@ -27,16 +36,16 @@ public class Planet extends Sprite{
 	}
 	
 	public Planet(double size,double maxX, double maxY, Player side){
-		this(size, size, maxX, maxY, Math.random()*400+100, Math.random()*400+100, side);
+		this(size, size, maxX, maxY, Math.random()*(maxX-200)+100, Math.random()*(maxY-200)+100, side);
 	}
 	
 	public void changePosition(){
-		x=Math.random()*400+100;
-		y=Math.random()*400+100;
+		x=Math.random()*(maxX()-200)+100;
+		y=Math.random()*(maxY()-200)+100;
 	}
 	
 	public void render(GraphicsContext gc) {
-		gc.drawImage(super.image, super.x, super.y);
+		super.render(gc);
 		String txt = Integer.toString(value);
 		gc.fillText(txt, x + width()/2, y + height()/2+7);
 	}
@@ -57,7 +66,6 @@ public class Planet extends Sprite{
 	public void product() {
 		if(!side.isNeutral()) {
 			cpt+=5;
-//			if (cpt>=1) {
 			if (cpt>=side.productionTime()) {
 				value++;
 				cpt=0;
@@ -83,9 +91,9 @@ public class Planet extends Sprite{
 		Collection<Spaceship> ships = new ArrayList<Spaceship>();
 		double nbSpaceships=percentage*value;
 		
-		Point p_planet = new Point(x,y);
 		Point xy = new Point(0,0);
-		double p;
+//		Point p_planet = new Point(x,y);
+//		double p;
 		
 		int index=0;
 		while(t_ships[index] !=null && !t_ships[index].isEmpty()) {
@@ -117,6 +125,7 @@ public class Planet extends Sprite{
 //					
 //				}
 //			}
+			
 			GuiGui.setPosition(x+width()/2+xy.x, y+height()/2+xy.y, destination);
 			ships.add(GuiGui);
 			value--;

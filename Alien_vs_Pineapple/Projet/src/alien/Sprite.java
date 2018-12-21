@@ -10,8 +10,8 @@ public class Sprite {
 	protected double y;
 	private double xSpeed;
 	private double ySpeed;
-	protected double width;
-	protected double height;
+	private double width;
+	private double height;
 	private double maxX;
 	private double maxY;
 	protected Player side; //player, adverse, neutral
@@ -121,7 +121,7 @@ public class Sprite {
 	public void updatePosition() {
 		x += xSpeed;
 		y += ySpeed;
-//		validatePosition();
+		validatePosition();
 	}
 
 	public void render(GraphicsContext gc) {
