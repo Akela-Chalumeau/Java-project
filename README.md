@@ -23,8 +23,11 @@ You can also change the amount of spaceships you want to sen with the keyboard. 
 
 
 Possible improvements : 
-- a save and load option
+- a save and load option (tried with "escape" and "enter")
 - a path finding
 - make the spaceships gravitate around their planets to send them one by one, without making them cover
 - pirate spaceships
 - planets with a changing production rate
+- improve the management of the squadrons, wich are controlled by a collection of table
+- power for spaceships and planets
+- better IA
