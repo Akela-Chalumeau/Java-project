@@ -20,3 +20,5 @@ The game ends when there is only one player left, and you loose when you do not 
 Instructions : You can send your spaceships using the mouse by clicking on your planet, dragging all the way to the destination planet, and releasing. That way, you will send a whole squadron. If you click on it, you can redirect the spaceships to change your target or decide to help one of your planets. Spaceships from different sides never crash between each other.
 
 You can also change the amount of spaceships you want to sen with the keyboard. By pressing the upwards arrow ↑(or Z), you can increase the percentage of spaceships you send by 5% ; and by pressing the downwards arrow ↓ (or S), you can decrease it by 5%. The percentage by defalut is 50%.
+
+
