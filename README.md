@@ -26,3 +26,5 @@ Possible improvements :
 - a save and load option
 - a path finding
 - make the spaceships gravitate around their planets to send them one by one, without making them cover
+- pirate spaceships
+- planets with a changing production rate
