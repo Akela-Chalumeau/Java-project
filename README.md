@@ -22,3 +22,7 @@ Instructions : You can send your spaceships using the mouse by clicking on your 
 You can also change the amount of spaceships you want to sen with the keyboard. By pressing the upwards arrow ↑(or Z), you can increase the percentage of spaceships you send by 5% ; and by pressing the downwards arrow ↓ (or S), you can decrease it by 5%. The percentage by defalut is 50%.
 
 
+Possible improvements : 
+- a save and load option
+- a path finding
+- make the spaceships gravitate around their planets to send them one by one, without making them cover
